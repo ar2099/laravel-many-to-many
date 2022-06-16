@@ -13,4 +13,7 @@ class Post extends Model
     public function Category(){
         return $this->belongsTo("App\Models\Category");
     }
+    public function traduttores(){
+        return $this->belongsToMany("App\Models\Traduttore");
+    }
 }

@@ -14,10 +14,11 @@ class DatabaseSeeder extends Seeder
       //  $this->call(PostSeeder::class);
        $this->call(
             [
-                
+                TraduttoreSeeder::class,
                 CategorySeeder::class,
                 PostSeeder::class,
                 UserSeeder::class,
+                
             ]
         );
     }

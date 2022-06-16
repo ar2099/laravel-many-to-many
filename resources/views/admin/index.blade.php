@@ -6,6 +6,7 @@
   <thead>
     <tr>
         <th scope="col">Autore</th>
+         <th scope="col">Traduttori</th>
         <th scope="col">Categoria</th>
         <th scope="col">Data</th>
         <th scope="col">Titolo</th>
@@ -23,6 +24,13 @@
     <tr>
     
     <td>{{$post->author}}</td>
+    <td>
+      @forelse ( $post->traduttores as $traduttore )
+        <p>{{ $traduttore->nome }}, {{ $traduttore->lingua }}</p>
+    @empty
+        <span>Non ci sono traduttori <span>
+    @endforelse
+    </td>
     <td>
     @if ($post->Category)
         <span>{{$post->Category->tema}}</span>
@@ -54,6 +62,10 @@
   </tbody>
 </table>
 
+@if ($posts->hasPages())
+{{$posts->links()}}
+    
+@endif
 <script>
   const deleteForms = document.querySelectorAll('.delete-form');
 deleteForms.forEach(form => {

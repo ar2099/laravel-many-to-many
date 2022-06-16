@@ -39,6 +39,9 @@
                         <li>
                             <a href="{{ route("admin.categories.index")}}">Category</a>
                         </li>
+                        <li>
+                            <a href="{{ route("admin.traduttores.index")}}">Traduttori</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

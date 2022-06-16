@@ -11,6 +11,14 @@
     <p>Titolo: {{$post->title}}</p>
     <p>Slung: {{$post->slung}}</p>
     <p>Testo: {{$post->text}}</p>
+    <p>Traduttori: 
+@forelse ( $post->traduttores as $traduttore )
+        <span >|{{ $traduttore->nome }}, {{ $traduttore->lingua }}| </span>
+    @empty
+        <span>Non ci sono traduttori <span>
+    @endforelse
+    </p>
+    
     
 
   

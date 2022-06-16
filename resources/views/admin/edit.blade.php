@@ -24,6 +24,23 @@
     <input type="date" name="data" class="form-control" id="data" placeholder="data"  value="{{$post->data}}">
     <input type="text" name="title" class="form-control" id="title" placeholder="title" value="{{$post->title}}">
     <input type="text" name="text" class="form-control" id="text" placeholder="text" value="{{$post->text}}">
+
+
+
+
+    @foreach ( $traduttores as $traduttore )
+            <div class="form-check form-check-inline">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="traduttore-{{ $traduttore->id }}"
+                    value=" {{ $traduttore->id }} "
+                    name="traduttores[]"
+                    @if ( in_array($traduttore->id, old('traduttores', $post_traduttores_id) ) ) checked @endif
+                >
+                <label class="form-check-label" for="traduttore-{{ $traduttore->id }}">{{ $traduttore->nome }}</label>
+            </div>
+        @endforeach
   
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
