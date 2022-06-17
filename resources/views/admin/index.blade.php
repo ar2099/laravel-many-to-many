@@ -12,6 +12,7 @@
         <th scope="col">Titolo</th>
          <th scope="col">Slung</th>
         <th scope="col">Testo</th>
+        <th scope="col">Immagine</th>
         <th scope="col">Azioni</th>
 
        
@@ -44,6 +45,7 @@
     <td>{{$post->title}}</td>
     <td>{{$post->slung}}</td>
     <td>{{$post->text}}</td>
+    <td><img src="{{ asset("storage/$post->image") }}" alt=""></td>
     <td>
         <a href=" {{route("admin.posts.show", $post->id) }}" class="btn btn-primary">Scheda</a>
          <a href=" {{route("admin.posts.edit", $post->id) }}" class="btn btn-primary">EDIT</a>

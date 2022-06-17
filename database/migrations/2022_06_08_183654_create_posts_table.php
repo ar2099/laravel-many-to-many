@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->string("title")->unique();
             $table->text("text");
             $table->string("slung");
+            $table->string('image')->nullable();
         });
     }
 

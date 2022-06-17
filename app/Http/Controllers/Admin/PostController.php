@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Traduttore;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -47,6 +48,12 @@ class PostController extends Controller
         $dati = $request->all();
         // dd($dati);
         $new_post = new Post();
+
+        if (array_key_exists("image", $dati)) {
+            $image_url = Storage::put('post_images', $dati["image"]);
+        $dati["image"] = $image_url;
+        }
+        
             $new_post->fill($dati);
             $new_post->slung = Str::slug($new_post->title, '-');
             $new_post->save();
@@ -94,6 +101,13 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $data = $request->all();
+
+        
+        if (array_key_exists("image", $data)) {
+            if( $post->image ) Storage::delete($post->image);
+            $image_url = Storage::put('post_images', $data["image"]);
+        $data["image"] = $image_url;
+        }
         $post['slung'] = Str::slug( $request->title , '-');
         $post->update($data);
 

@@ -5,7 +5,7 @@
     
     
     
-    <form action="{{ route("admin.posts.update", $post->id)}}" method="POST" >
+    <form action="{{ route("admin.posts.update", $post->id)}}" method="POST" enctype="multipart/form-data">
         @method("PUT")
  @csrf
  <select name="category_id" id="category" class="form-control">
@@ -24,8 +24,10 @@
     <input type="date" name="data" class="form-control" id="data" placeholder="data"  value="{{$post->data}}">
     <input type="text" name="title" class="form-control" id="title" placeholder="title" value="{{$post->title}}">
     <input type="text" name="text" class="form-control" id="text" placeholder="text" value="{{$post->text}}">
+    <p>Immagine: </p>
+    <input type="file" name="image" class="form-control-file" id="image" placeholder="image" >
 
-
+<p>Traduttore\i: </p>
 
 
     @foreach ( $traduttores as $traduttore )

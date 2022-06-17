@@ -28,6 +28,7 @@ class PostSeeder extends Seeder
             $post->title = $faker->sentence();
             $post->text = $faker->text(300);
             $post->slung = Str::slug($post->title, '-');
+            // $post->image = $faker->imageUrl(250, 250);
             $post->save();
         }
     }

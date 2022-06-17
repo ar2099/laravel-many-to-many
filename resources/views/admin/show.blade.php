@@ -11,6 +11,7 @@
     <p>Titolo: {{$post->title}}</p>
     <p>Slung: {{$post->slung}}</p>
     <p>Testo: {{$post->text}}</p>
+    <img src="{{ asset("storage/$post->image") }}" alt="">
     <p>Traduttori: 
 @forelse ( $post->traduttores as $traduttore )
         <span >|{{ $traduttore->nome }}, {{ $traduttore->lingua }}| </span>
