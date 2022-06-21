@@ -9,6 +9,9 @@ use App\Models\Category;
 use App\Models\Traduttore;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\CreateMail;
 
 class PostController extends Controller
 {
@@ -46,6 +49,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $dati = $request->all();
+        $user = Auth::user();
         // dd($dati);
         $new_post = new Post();
 
@@ -60,6 +64,9 @@ class PostController extends Controller
            
 
            if ( array_key_exists( 'traduttores', $dati ) )  $new_post->traduttores()->attach($dati['traduttores']);
+
+           $mail = new CreateMail();
+           Mail::to($user->email)->send($mail);
 
             return redirect()->route("admin.posts.show", $new_post) ;
     }
